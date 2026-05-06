@@ -113,15 +113,23 @@ uploadInput.addEventListener("change", () => {
 acceptCookie.addEventListener("click", () => {
   cookieBar.style.display = "none";
 });
-// SPLASH HIDE AFTER LOAD
-window.addEventListener("load", () => {
+// SPLASH FIX (reliable)
+function hideSplash() {
   const splash = document.getElementById("splashScreen");
   if (splash) {
     splash.style.opacity = "0";
-    splash.style.transition = "0.5s";
+    splash.style.transition = "1s";
 
     setTimeout(() => {
       splash.remove();
     }, 500);
   }
+}
+
+// 1️⃣ DOM ready pe hide (fast)
+window.addEventListener("DOMContentLoaded", () => {
+  setTimeout(hideSplash, 800);
 });
+
+// 2️⃣ Backup (agar load event aaye)
+window.addEventListener("load", hideSplash);
