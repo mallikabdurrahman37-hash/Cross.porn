@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cross.porn — Premium Gallery</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/glass.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/splash.css" />
+</head>
+<body>
+
+  <!-- SPLASH SCREEN -->
+  <div id="splash-screen">
+    <div class="splash-inner">
+      <img src="assets/load_splash.png" alt="Loading" class="splash-logo" onerror="this.style.display='none'" />
+      <div class="splash-brand">Cross<span>.porn</span></div>
+      <div class="splash-bar"><div class="splash-fill"></div></div>
+      <p class="splash-text">Loading premium experience…</p>
+    </div>
+  </div>
+
+  <!-- AGE GATE -->
+  <div id="age-gate" class="overlay-backdrop" style="display:none;">
+    <div class="glass-modal age-modal">
+      <div class="age-icon">🔞</div>
+      <h2 class="age-title">Adults Only</h2>
+      <p class="age-desc">This website contains explicit adult content intended only for individuals 18 years of age or older. By entering you confirm you are at least 18 years old and consent to viewing adult content.</p>
+      <div class="age-buttons">
+        <button class="btn-primary" id="enter-btn">I am 18+ — Enter</button>
+        <button class="btn-secondary" id="leave-btn">Under 18 — Leave</button>
+      </div>
+      <p class="age-footer">By entering you accept our Terms of Service and Privacy Policy.</p>
+    </div>
+  </div>
+
+  <!-- COOKIE BAR -->
+  <div id="cookie-bar" class="glass-cookie" style="display:none;">
+    <span>🍪 We use cookies to enhance your experience. By continuing you accept our cookie policy.</span>
+    <button class="cookie-dismiss" id="cookie-dismiss">Got it</button>
+  </div>
+
+  <!-- MAIN APP -->
+  <div id="app" style="display:none;">
+
+    <!-- TOPBAR -->
+    <header class="topbar glass-topbar">
+      <div class="topbar-left">
+        <img src="assets/logo.png" alt="Cross.porn" class="topbar-logo" onerror="this.style.display='none'" />
+        <a href="index.html" class="topbar-brand">Cross<span>.porn</span></a>
+      </div>
+      <div class="topbar-right">
+        <button class="icon-btn" id="search-toggle" title="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <button class="icon-btn" id="profile-btn" title="Profile">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+        <button class="icon-btn" id="menu-toggle" title="Menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- SEARCH BAR (hidden by default) -->
+    <div class="search-wrapper glass-search" id="search-wrapper" style="display:none;">
+      <input type="text" id="search-input" placeholder="Search videos, tags, categories…" autocomplete="off" />
+      <button class="search-close" id="search-close">✕</button>
+    </div>
+
+    <!-- SIDE MENU -->
+    <div class="side-overlay" id="side-overlay" style="display:none;"></div>
+    <nav class="side-menu glass-panel" id="side-menu" style="display:none;">
+      <div class="side-header">
+        <span class="side-brand">Cross<span>.porn</span></span>
+        <button class="side-close" id="side-close">✕</button>
+      </div>
+      <ul class="side-links">
+        <li><a href="index.html">🏠 Home</a></li>
+        <li><a href="profile.html" id="menu-profile-link">👤 My Profile</a></li>
+        <li><a href="#" id="menu-login-link" style="display:none;">🔑 Login / Register</a></li>
+        <li><a href="admin.html" id="menu-admin-link" style="display:none;">⚙️ Admin Panel</a></li>
+        <li><a href="#" id="menu-logout-link" style="display:none;">🚪 Logout</a></li>
+      </ul>
+      <div class="side-user-info" id="side-user-info"></div>
+    </nav>
+
+    <!-- AUTH MODAL -->
+    <div class="overlay-backdrop" id="auth-modal" style="display:none;">
+      <div class="glass-modal auth-modal">
+        <button class="modal-close" id="auth-close">✕</button>
+        <div class="auth-tabs">
+          <button class="auth-tab active" data-tab="login">Login</button>
+          <button class="auth-tab" data-tab="register">Register</button>
+        </div>
+
+        <!-- LOGIN FORM -->
+        <div class="auth-form" id="login-form">
+          <h3>Welcome Back</h3>
+          <input type="email" id="login-email" placeholder="Email" />
+          <input type="password" id="login-password" placeholder="Password" />
+          <button class="btn-primary" id="login-submit">Login</button>
+          <p class="auth-error" id="login-error"></p>
+        </div>
+
+        <!-- REGISTER FORM -->
+        <div class="auth-form" id="register-form" style="display:none;">
+          <h3>Create Account</h3>
+          <input type="text" id="reg-username" placeholder="Username" />
+          <input type="email" id="reg-email" placeholder="Email" />
+          <input type="password" id="reg-password" placeholder="Password" />
+          <input type="tel" id="reg-mobile" placeholder="Mobile Number (optional)" />
+          <button class="btn-primary" id="register-submit">Create Account</button>
+          <p class="auth-error" id="register-error"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAG BAR -->
+    <div class="tag-bar-wrapper">
+      <div class="tag-bar" id="tag-bar">
+        <button class="tag-chip active" data-tag="all">All</button>
+        <!-- Dynamic tags injected by JS -->
+      </div>
+      <button class="tag-more" id="tag-more-btn" style="display:none;">More ▾</button>
+    </div>
+
+    <!-- VIDEO GRID -->
+    <main class="main-content" id="main-content">
+      <div class="video-grid" id="video-grid">
+        <!-- Cards injected by JS -->
+      </div>
+      <div class="no-results" id="no-results" style="display:none;">
+        <p>No videos found.</p>
+      </div>
+      <div class="loading-indicator" id="loading-indicator" style="display:none;">
+        <div class="spinner"></div>
+      </div>
+    </main>
+
+    <!-- PAGINATION -->
+    <div class="pagination-wrapper" id="pagination-wrapper" style="display:none;">
+      <div class="pagination" id="pagination"></div>
+    </div>
+
+  </div><!-- /#app -->
+
+  <!-- Firebase SDK -->
+  <script type="module" src="js/firebase.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

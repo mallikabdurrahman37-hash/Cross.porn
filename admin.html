@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel — Cross.porn</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/glass.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+  <div id="app">
+    <header class="topbar glass-topbar">
+      <div class="topbar-left">
+        <img src="assets/logo.png" alt="Cross.porn" class="topbar-logo" onerror="this.style.display='none'" />
+        <a href="index.html" class="topbar-brand">Cross<span>.porn</span></a>
+      </div>
+      <div class="topbar-right">
+        <a href="index.html" class="icon-btn" title="Home">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+        </a>
+        <button class="icon-btn" id="admin-logout-btn" title="Logout">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16,17 21,12 16,7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- ACCESS DENIED -->
+    <div class="main-content" id="access-denied" style="display:none;">
+      <div class="glass-card text-center">
+        <h2>🚫 Access Denied</h2>
+        <p>You must be logged in as admin to access this page.</p>
+        <a href="index.html" class="btn-primary">Go Home</a>
+      </div>
+    </div>
+
+    <!-- ADMIN PANEL -->
+    <main class="main-content admin-page" id="admin-panel" style="display:none;">
+      <h1 class="admin-title">⚙️ Admin Panel</h1>
+
+      <!-- ANALYTICS -->
+      <div class="admin-grid-stats">
+        <div class="glass-card stat-card">
+          <div class="stat-icon">🎬</div>
+          <div class="stat-val" id="stat-videos">—</div>
+          <div class="stat-label">Total Videos</div>
+        </div>
+        <div class="glass-card stat-card">
+          <div class="stat-icon">👥</div>
+          <div class="stat-val" id="stat-users">—</div>
+          <div class="stat-label">Total Users</div>
+        </div>
+        <div class="glass-card stat-card">
+          <div class="stat-icon">👁</div>
+          <div class="stat-val" id="stat-views">—</div>
+          <div class="stat-label">Total Views</div>
+        </div>
+        <div class="glass-card stat-card">
+          <div class="stat-icon">🔖</div>
+          <div class="stat-val" id="stat-tags">—</div>
+          <div class="stat-label">Active Tags</div>
+        </div>
+      </div>
+
+      <!-- ADD VIDEO -->
+      <div class="glass-card admin-section">
+        <h2>➕ Add New Video</h2>
+        <div class="admin-form">
+          <input type="url" id="video-url-input" placeholder="Paste video URL (xHamster, YouTube, etc.)" />
+          <button class="btn-primary" id="fetch-meta-btn">Fetch Metadata</button>
+        </div>
+        <div class="meta-preview glass-inner" id="meta-preview" style="display:none;">
+          <img id="meta-thumb" src="" alt="Thumbnail" class="meta-thumb-preview" />
+          <div class="meta-fields">
+            <input type="text" id="meta-title" placeholder="Title" />
+            <textarea id="meta-hashtags" placeholder="#hidden #hashtags #here (not shown to users)" rows="2"></textarea>
+            <div class="tag-select-area">
+              <label>Assign Tags:</label>
+              <div id="admin-tag-select" class="admin-tag-select"></div>
+            </div>
+            <button class="btn-primary" id="add-video-btn">Add Video</button>
+            <p class="admin-msg" id="add-video-msg"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAG MANAGEMENT -->
+      <div class="glass-card admin-section">
+        <h2>🏷 Tag Management</h2>
+        <div class="admin-form">
+          <input type="text" id="new-tag-input" placeholder="New tag name (e.g. 4K)" />
+          <button class="btn-primary" id="add-tag-btn">Add Tag</button>
+        </div>
+        <div class="tag-management-list" id="tag-management-list"></div>
+      </div>
+
+      <!-- VIDEO MANAGEMENT -->
+      <div class="glass-card admin-section">
+        <h2>🎬 Video Management</h2>
+        <div class="admin-search-bar">
+          <input type="text" id="admin-video-search" placeholder="Search videos…" />
+        </div>
+        <div class="admin-video-list" id="admin-video-list">
+          <div class="spinner"></div>
+        </div>
+        <div class="pagination" id="admin-video-pagination"></div>
+      </div>
+
+      <!-- USER MANAGEMENT -->
+      <div class="glass-card admin-section">
+        <h2>👥 User Management</h2>
+        <div class="admin-user-list" id="admin-user-list">
+          <div class="spinner"></div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script type="module" src="js/firebase.js"></script>
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Profile — Cross.porn</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/glass.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+  <div id="app">
+    <!-- TOPBAR -->
+    <header class="topbar glass-topbar">
+      <div class="topbar-left">
+        <img src="assets/logo.png" alt="Cross.porn" class="topbar-logo" onerror="this.style.display='none'" />
+        <a href="index.html" class="topbar-brand">Cross<span>.porn</span></a>
+      </div>
+      <div class="topbar-right">
+        <a href="index.html" class="icon-btn" title="Home">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+        </a>
+        <button class="icon-btn" id="logout-btn" title="Logout">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16,17 21,12 16,7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="main-content profile-page">
+      <!-- NOT LOGGED IN -->
+      <div class="glass-card profile-login-prompt" id="profile-login-prompt" style="display:none;">
+        <h2>🔒 Login Required</h2>
+        <p>Please login to access your profile.</p>
+        <a href="index.html" class="btn-primary">Go to Homepage</a>
+      </div>
+
+      <!-- PROFILE CONTENT -->
+      <div id="profile-content" style="display:none;">
+
+        <!-- PROFILE CARD -->
+        <div class="glass-card profile-card">
+          <div class="profile-avatar-area">
+            <div class="profile-avatar" id="profile-avatar-display">😊</div>
+            <div class="emoji-picker" id="emoji-picker">
+              <div class="emoji-grid">
+                😊 😎 🤩 🦁 🐯 🦊 🐺 🦅 🐉 👑 🔥 ⚡ 🌙 💎 🎭
+              </div>
+            </div>
+            <button class="btn-ghost btn-sm" id="change-avatar-btn">Change Avatar</button>
+          </div>
+          <div class="profile-info">
+            <div class="profile-field">
+              <label>Username</label>
+              <div class="field-row">
+                <input type="text" id="profile-username" placeholder="Your username" />
+                <button class="btn-primary btn-sm" id="save-username-btn">Save</button>
+              </div>
+            </div>
+            <div class="profile-field">
+              <label>Email</label>
+              <p id="profile-email" class="profile-static"></p>
+            </div>
+            <p class="profile-save-msg" id="profile-save-msg"></p>
+          </div>
+        </div>
+
+        <!-- WATCH HISTORY -->
+        <div class="glass-card history-card">
+          <div class="history-header">
+            <h3>⏱ Watch History</h3>
+            <button class="btn-ghost btn-sm" id="clear-history-btn">Clear All</button>
+          </div>
+          <div class="history-list" id="history-list">
+            <p class="empty-msg">No watch history yet.</p>
+          </div>
+        </div>
+
+      </div><!-- /#profile-content -->
+    </main>
+  </div>
+
+  <script type="module" src="js/firebase.js"></script>
+  <script type="module" src="js/profile.js"></script>
+</body>
+</html>
