@@ -1,0 +1,121 @@
+/* ===========================
+   animations.css
+   =========================== */
+
+/* Fade in */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Fade in up (card entrance) */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Scale in */
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Slide in from right */
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(100%); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Slide out to right */
+@keyframes slideOutRight {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(100%); }
+}
+
+/* Pulse glow */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(229,9,20,0); }
+  50%       { box-shadow: 0 0 20px 4px rgba(229,9,20,0.35); }
+}
+
+/* Spin */
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Shimmer */
+@keyframes shimmer {
+  from { background-position: -200% 0; }
+  to   { background-position: 200% 0; }
+}
+
+/* ---- Utility Classes ---- */
+
+.animate-fade-in {
+  animation: fadeIn 0.45s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.animate-slide-right {
+  animation: slideRight 0.35s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* Staggered card entrance */
+.video-card {
+  animation: fadeUp 0.4s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.video-card:nth-child(1)  { animation-delay: 0.03s; }
+.video-card:nth-child(2)  { animation-delay: 0.06s; }
+.video-card:nth-child(3)  { animation-delay: 0.09s; }
+.video-card:nth-child(4)  { animation-delay: 0.12s; }
+.video-card:nth-child(5)  { animation-delay: 0.15s; }
+.video-card:nth-child(6)  { animation-delay: 0.18s; }
+.video-card:nth-child(7)  { animation-delay: 0.21s; }
+.video-card:nth-child(8)  { animation-delay: 0.24s; }
+.video-card:nth-child(9)  { animation-delay: 0.27s; }
+.video-card:nth-child(10) { animation-delay: 0.30s; }
+.video-card:nth-child(n+11) { animation-delay: 0.33s; }
+
+/* Skeleton shimmer for lazy images */
+.img-loading {
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.04) 0%,
+    rgba(255,255,255,0.12) 50%,
+    rgba(255,255,255,0.04) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* Modal entrance */
+.glass-modal {
+  animation: scaleIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* Side menu entrance */
+.side-menu {
+  animation: slideRight 0.3s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* Search bar slide */
+.search-wrapper {
+  animation: fadeIn 0.25s ease both;
+}
+
+/* Cookie bar entrance */
+.glass-cookie {
+  animation: fadeUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.8s both;
+}
+
+/* Hover glow on btn-primary */
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+/* Icon btn spin on click */
+.icon-btn:active {
+  transform: scale(0.9);
+}
