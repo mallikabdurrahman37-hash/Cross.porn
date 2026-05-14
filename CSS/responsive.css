@@ -1,0 +1,133 @@
+/* ===========================
+   responsive.css
+   =========================== */
+
+/* ---- Desktop (1200px+) ---- */
+@media (min-width: 1200px) {
+  .video-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* ---- Large tablet / small desktop (900–1199px) ---- */
+@media (min-width: 900px) and (max-width: 1199px) {
+  .video-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ---- Tablet (600–899px) ---- */
+@media (min-width: 600px) and (max-width: 899px) {
+  .video-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .admin-grid-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ---- Mobile (< 600px) ---- */
+@media (max-width: 599px) {
+  :root {
+    --topbar-h: 56px;
+    --tag-bar-h: 46px;
+  }
+
+  .topbar { padding: 0 14px; }
+  .topbar-brand { font-size: 1.1rem; }
+  .topbar-logo { width: 32px; height: 32px; }
+
+  .icon-btn { width: 36px; height: 36px; }
+
+  .main-content {
+    padding-top: calc(var(--topbar-h) + var(--tag-bar-h) + 16px);
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-bottom: 70px;
+  }
+
+  .video-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .video-title { font-size: 0.8rem; }
+  .video-meta { padding: 8px 10px 10px; }
+
+  .side-menu { width: 100%; max-width: 320px; }
+
+  .auth-modal { padding: 24px 20px; }
+
+  .age-modal { padding: 28px 20px; }
+  .age-buttons { gap: 8px; }
+
+  .glass-cookie {
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    font-size: 0.75rem;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px 14px;
+  }
+
+  .profile-card { flex-direction: column; align-items: center; }
+  .profile-info { width: 100%; }
+
+  .meta-preview { flex-direction: column; }
+  .meta-thumb-preview { width: 100%; height: auto; aspect-ratio: 16/9; }
+
+  .admin-form { flex-direction: column; }
+  .admin-grid-stats { grid-template-columns: repeat(2, 1fr); }
+
+  .admin-video-item { flex-wrap: wrap; }
+  .admin-video-thumb { width: 64px; height: 40px; }
+
+  .pagination { gap: 5px; }
+  .page-btn { min-width: 34px; height: 34px; font-size: 0.8rem; }
+
+  .tag-bar-wrapper { padding: 0 10px; }
+  .tag-chip { padding: 4px 10px; font-size: 0.72rem; }
+}
+
+/* ---- Very small mobile (< 360px) ---- */
+@media (max-width: 360px) {
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar-brand { font-size: 1rem; }
+}
+
+/* ---- Touch / hover improvements ---- */
+@media (hover: none) {
+  .video-card:hover {
+    transform: none;
+  }
+
+  .btn-primary:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* ---- Reduce motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---- Safe area (iPhone notch) ---- */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .main-content {
+    padding-bottom: calc(80px + env(safe-area-inset-bottom));
+  }
+
+  .glass-cookie {
+    bottom: calc(16px + env(safe-area-inset-bottom));
+  }
+}
